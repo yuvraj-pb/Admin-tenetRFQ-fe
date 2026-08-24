@@ -18,8 +18,8 @@ export default function ProfilePage() {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-2xl font-bold text-gray-900 mb-1">Profile</h1>
-      <p className="text-gray-500 mb-6">Your platform admin account.</p>
+      <p className="text-sm text-neutral-400 mb-2">Account</p>
+      <h1 className="text-4xl font-medium tracking-tight text-neutral-300 mb-6">Profile</h1>
 
       <Card>
         <CardHeader>

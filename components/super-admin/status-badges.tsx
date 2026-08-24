@@ -22,7 +22,11 @@ const SUB_STATUS_STYLES: Record<SubscriptionStatus, string> = {
 
 export function CompanyStatusBadge({ status }: { status: CompanyLifecycleStatus }) {
   return (
-    <Badge variant="outline" className={cn("capitalize font-medium", COMPANY_STATUS_STYLES[status])}>
+    <Badge
+      variant="outline"
+      size="sm"
+      className={cn("capitalize font-semibold tracking-wide", COMPANY_STATUS_STYLES[status])}
+    >
       {status}
     </Badge>
   )
@@ -31,13 +35,17 @@ export function CompanyStatusBadge({ status }: { status: CompanyLifecycleStatus 
 export function SubscriptionStatusBadge({ status }: { status?: SubscriptionStatus | null }) {
   if (!status) {
     return (
-      <Badge variant="outline" className="bg-slate-50 text-slate-500 border-slate-200">
-        None
+      <Badge variant="outline" size="sm" className="bg-slate-50 text-slate-500 border-slate-200">
+        No plan
       </Badge>
     )
   }
   return (
-    <Badge variant="outline" className={cn("capitalize font-medium", SUB_STATUS_STYLES[status])}>
+    <Badge
+      variant="outline"
+      size="sm"
+      className={cn("capitalize font-semibold tracking-wide", SUB_STATUS_STYLES[status])}
+    >
       {status.replace(/_/g, " ")}
     </Badge>
   )

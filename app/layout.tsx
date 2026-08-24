@@ -1,14 +1,18 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import { QueryProvider } from "@/lib/query/provider"
 import { Toaster } from "sonner"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = localFont({
+  src: "./fonts/InterVariable.woff2",
+  display: "swap",
+  weight: "100 900",
+})
 
 export const metadata: Metadata = {
-  title: "RFQ Platform — Super Admin",
-  description: "Manage tenant companies, subscription plans, subscriptions, and billing.",
+  title: "TenetRFQ Control Plane",
+  description: "Enterprise tenant operations — organizations, plans, subscriptions, and billing.",
 }
 
 export default function RootLayout({
