@@ -5,24 +5,24 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-sm hover:shadow-md",
-        destructive: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-sm hover:shadow-md",
-        outline: "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700",
-        secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600",
-        ghost: "text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:ring-gray-500 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-100",
-        link: "text-blue-600 underline-offset-4 hover:underline hover:text-blue-700 focus:ring-blue-500",
-        success: "bg-green-600 text-white hover:bg-green-700 focus:ring-green-500 shadow-sm hover:shadow-md",
-        warning: "bg-orange-600 text-white hover:bg-orange-700 focus:ring-orange-500 shadow-sm hover:shadow-md",
-        info: "bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500 shadow-sm hover:shadow-md",
+        default: "bg-ink text-white hover:bg-neutral-800 shadow-sm",
+        destructive: "bg-red-600 text-white hover:bg-red-700 shadow-sm",
+        outline: "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 hover:border-neutral-300",
+        secondary: "bg-neutral-100 text-neutral-900 hover:bg-neutral-200",
+        ghost: "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-950",
+        link: "text-primary underline-offset-4 hover:underline",
+        success: "bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm",
+        warning: "bg-amber-500 text-neutral-950 hover:bg-amber-400 shadow-sm",
+        info: "bg-primary text-white hover:bg-primary-600 shadow-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3 text-sm",
-        lg: "h-11 rounded-md px-8 text-base",
+        sm: "h-9 px-3.5 text-sm",
+        lg: "h-11 px-8 text-base",
         icon: "h-10 w-10",
       },
     },

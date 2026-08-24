@@ -56,7 +56,10 @@ export const API_ENDPOINTS = {
     },
     PLANS: {
       LIST: "/platform/plans",
+      CREATE: "/platform/plans",
       GET: (id: string | number) => `/platform/plans/${id}`,
+      UPDATE: (id: string | number) => `/platform/plans/${id}`,
+      ARCHIVE: (id: string | number) => `/platform/plans/${id}/archive`,
     },
     SUBSCRIPTIONS: {
       LIST: "/platform/subscriptions",
@@ -66,8 +69,40 @@ export const API_ENDPOINTS = {
         `/platform/companies/${companyId}/subscription/change-plan`,
       RENEW: (companyId: string | number) =>
         `/platform/companies/${companyId}/subscription/renew`,
+      GRANT: (companyId: string | number) =>
+        `/platform/companies/${companyId}/subscription/grant`,
+      START_TRIAL: (companyId: string | number) =>
+        `/platform/companies/${companyId}/subscription/start-trial`,
       CANCEL: (companyId: string | number) =>
         `/platform/companies/${companyId}/subscription/cancel`,
+      RESUME: (companyId: string | number) =>
+        `/platform/companies/${companyId}/subscription/resume`,
+    },
+    FEATURES: {
+      UPDATE: (companyId: string | number) => `/platform/companies/${companyId}/features`,
+      CATALOG: "/platform/entitlements/catalog",
+    },
+    LEADS: {
+      LIST: "/platform/leads",
+      CREATE: "/platform/leads",
+      GET: (id: string | number) => `/platform/leads/${id}`,
+      UPDATE: (id: string | number) => `/platform/leads/${id}`,
+      ASSIGN: (id: string | number) => `/platform/leads/${id}/assign`,
+      CALLS: (id: string | number) => `/platform/leads/${id}/calls`,
+      START_TRIAL: (id: string | number) => `/platform/leads/${id}/start-trial`,
+      CONVERT: (id: string | number) => `/platform/leads/${id}/convert`,
+    },
+    QUOTES: {
+      LIST: "/platform/quotes",
+      CREATE: "/platform/quotes",
+      GET: (id: string | number) => `/platform/quotes/${id}`,
+      UPDATE: (id: string | number) => `/platform/quotes/${id}`,
+      SEND: (id: string | number) => `/platform/quotes/${id}/send`,
+      ACCEPT: (id: string | number) => `/platform/quotes/${id}/accept`,
+      REJECT: (id: string | number) => `/platform/quotes/${id}/reject`,
+    },
+    PAYMENTS: {
+      BY_COMPANY: (companyId: string | number) => `/platform/companies/${companyId}/payments`,
     },
     BILLING: {
       CREATE_CHECKOUT: "/platform/billing/checkout",
@@ -106,11 +141,24 @@ export const QUERY_KEYS = {
       LIST: ["platform", "plans", "list"] as const,
       DETAIL: (id: string | number) => ["platform", "plans", "detail", id] as const,
     },
+    LEADS: {
+      ALL: ["platform", "leads"] as const,
+      LIST: (filters?: unknown) => ["platform", "leads", "list", filters] as const,
+      DETAIL: (id: string | number) => ["platform", "leads", "detail", id] as const,
+    },
+    QUOTES: {
+      ALL: ["platform", "quotes"] as const,
+      LIST: (filters?: unknown) => ["platform", "quotes", "list", filters] as const,
+    },
     SUBSCRIPTIONS: {
       ALL: ["platform", "subscriptions"] as const,
       LIST: (filters?: unknown) => ["platform", "subscriptions", "list", filters] as const,
       BY_COMPANY: (companyId: string | number) =>
         ["platform", "subscriptions", "company", companyId] as const,
+    },
+    PAYMENTS: {
+      BY_COMPANY: (companyId: string | number) =>
+        ["platform", "payments", "company", companyId] as const,
     },
   },
 } as const

@@ -4,7 +4,6 @@ import { create } from "zustand"
 import { persist, createJSONStorage } from "zustand/middleware"
 import { toast } from "sonner"
 import { useEffect, useMemo } from "react"
-import { API_CONFIG } from "@/lib/constants/api"
 import { AuthStorage } from "@/lib/storage/auth-storage"
 
 /** Roles allowed into the platform admin panel. */
@@ -93,7 +92,7 @@ const useAuthStore = create<AuthStore>()(
         set({ isLoading: true, error: null })
 
         try {
-          const response = await fetch(`${API_CONFIG.BASE_URL}/users/login`, {
+          const response = await fetch("/api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -146,7 +145,12 @@ const useAuthStore = create<AuthStore>()(
 
           return { user }
         } catch (error) {
-          const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred"
+          const errorMessage =
+            error instanceof TypeError && /fetch/i.test(error.message)
+              ? "Cannot reach the login API. Check NEXT_PUBLIC_API_BASE_URL and that the backend is running."
+              : error instanceof Error
+                ? error.message
+                : "An unexpected error occurred"
           set({
             isAuthenticated: false,
             user: null,

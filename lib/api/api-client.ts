@@ -7,6 +7,7 @@ import axios, {
 import { API_CONFIG, API_ENDPOINTS } from "@/lib/constants/api"
 import { AuthStorage } from "@/lib/storage/auth-storage"
 import { ApiNotificationHandler } from "./api-notification-handler"
+import { getApiErrorMessage } from "./api-error"
 
 class ApiClient {
   private instance: AxiosInstance
@@ -218,8 +219,8 @@ class ApiClient {
           }
         } else if (error.request) {
           ApiNotificationHandler.handleError(error, {
-            errorTitle: "Server Unavailable",
-            errorMessage: "Unable to connect to the server.",
+            errorTitle: "Platform API offline",
+            errorMessage: getApiErrorMessage(error),
           })
         }
 

@@ -1,13 +1,12 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
-// Dynamically import ReactQueryDevtools to prevent chunk loading issues
 const ReactQueryDevtools = React.lazy(() =>
   import("@tanstack/react-query-devtools").then((d) => ({
     default: d.ReactQueryDevtools,
-  }))
+  })),
 )
 
 export function QueryProvider({ children }: { children: React.ReactNode }) {
@@ -32,11 +31,16 @@ export function QueryProvider({ children }: { children: React.ReactNode }) {
         },
       }),
   )
+  const [showDevtools, setShowDevtools] = useState(false)
+
+  useEffect(() => {
+    setShowDevtools(process.env.NODE_ENV === "development")
+  }, [])
 
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      {process.env.NODE_ENV === 'development' && (
+      {showDevtools && (
         <React.Suspense fallback={null}>
           <ReactQueryDevtools initialIsOpen={false} />
         </React.Suspense>

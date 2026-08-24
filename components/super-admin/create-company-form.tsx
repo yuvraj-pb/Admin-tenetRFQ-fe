@@ -32,7 +32,7 @@ export function CreateCompanyForm() {
   const [planId, setPlanId] = useState("")
   const [billingInterval, setBillingInterval] = useState<BillingInterval>("monthly")
   const [paymentProvider, setPaymentProvider] = useState<PaymentProvider>("razorpay")
-  const [collectPayment, setCollectPayment] = useState(true)
+  const [collectPayment, setCollectPayment] = useState(false)
   const [adminName, setAdminName] = useState("")
   const [adminEmail, setAdminEmail] = useState("")
   const [adminMobile, setAdminMobile] = useState("")
@@ -117,11 +117,14 @@ export function CreateCompanyForm() {
             <ArrowLeft className="h-4 w-4 mr-1" /> Back
           </Link>
         </Button>
-        <h1 className="text-2xl font-bold text-gray-900">Onboard Company</h1>
+        <h1 className="text-4xl font-medium tracking-tight text-neutral-300">Onboard tenant</h1>
+        <p className="text-sm text-neutral-500 mt-2">
+          Provision an isolated workspace, a company admin, and a subscription in one pass.
+        </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <Card className="bg-white border border-gray-200/80 shadow-sm">
+        <Card className="bg-neutral-50/80 border-0 shadow-none">
           <CardHeader>
             <CardTitle className="text-lg">Company details</CardTitle>
           </CardHeader>
@@ -176,7 +179,7 @@ export function CreateCompanyForm() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white border border-gray-200/80 shadow-sm">
+        <Card className="bg-neutral-50/80 border-0 shadow-none">
           <CardHeader>
             <CardTitle className="text-lg">Company Admin</CardTitle>
           </CardHeader>
@@ -214,7 +217,7 @@ export function CreateCompanyForm() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white border border-gray-200/80 shadow-sm">
+        <Card className="bg-neutral-50/80 border-0 shadow-none">
           <CardHeader>
             <CardTitle className="text-lg">Subscription</CardTitle>
           </CardHeader>
@@ -248,6 +251,36 @@ export function CreateCompanyForm() {
                       ]}
                     />
                   </div>
+                  <div className="sm:col-span-2 space-y-2">
+                    <Label>Who pays for this player?</Label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setCollectPayment(false)}
+                        className={`rounded-xl border px-3 py-3 text-left text-sm ${
+                          !collectPayment ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200"
+                        }`}
+                      >
+                        <p className="font-semibold">I cover it</p>
+                        <p className={`text-[11px] mt-1 ${!collectPayment ? "text-slate-300" : "text-slate-500"}`}>
+                          Plan goes live now. Tenant is not charged at Razorpay.
+                        </p>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setCollectPayment(true)}
+                        className={`rounded-xl border px-3 py-3 text-left text-sm ${
+                          collectPayment ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200"
+                        }`}
+                      >
+                        <p className="font-semibold">Charge this tenant</p>
+                        <p className={`text-[11px] mt-1 ${collectPayment ? "text-slate-300" : "text-slate-500"}`}>
+                          Opens checkout so their company pays the listed price.
+                        </p>
+                      </button>
+                    </div>
+                  </div>
+                  {collectPayment && (
                   <div className="space-y-2">
                     <Label>Payment provider</Label>
                     <Select
@@ -259,17 +292,7 @@ export function CreateCompanyForm() {
                       ]}
                     />
                   </div>
-                  <div className="flex items-end pb-2">
-                    <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={collectPayment}
-                        onChange={(e) => setCollectPayment(e.target.checked)}
-                        className="rounded border-gray-300"
-                      />
-                      Collect payment now (in-app checkout)
-                    </label>
-                  </div>
+                  )}
                 </div>
 
                 {selectedPlan && (
@@ -320,7 +343,7 @@ export function CreateCompanyForm() {
                 <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Creating…
               </>
             ) : (
-              "Create company"
+              "Provision tenant"
             )}
           </Button>
         </div>

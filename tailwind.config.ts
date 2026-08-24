@@ -14,58 +14,49 @@ const config: Config = {
         xs: "450px",
       },
       fontFamily: {
-        sans: ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "Roboto", "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
-        // Apple-inspired color palette
         brand: {
-          primary: "#007AFF", // Apple Blue
-          secondary: "#5AC8FA", // Light Blue
-          accent: "#FF9500", // Orange
-          success: "#34C759", // Green
-          warning: "#FF9500", // Orange
-          danger: "#FF3B30", // Red
-          gray: "#8E8E93", // Apple Gray
+          primary: "#E11D74",
+          secondary: "#F7A8C8",
+          accent: "#E11D74",
+          success: "#12B76A",
+          warning: "#F79009",
+          danger: "#F04438",
+          gray: "#8A8A8E",
         },
+        canvas: "#F3F1EF",
+        ink: "#141414",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#007AFF",
+          DEFAULT: "#E11D74",
           foreground: "#ffffff",
-          50: "#f0f8ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#007AFF",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e",
+          50: "#FFF1F6",
+          100: "#FFE4EE",
+          200: "#FECDD9",
+          300: "#FDA4BB",
+          400: "#FB718A",
+          500: "#E11D74",
+          600: "#C91863",
+          700: "#A1104F",
+          800: "#881044",
+          900: "#6B1239",
         },
         secondary: {
-          DEFAULT: "#5AC8FA",
-          foreground: "#ffffff",
-          50: "#f0fdff",
-          100: "#ccfbf1",
-          200: "#99f6e4",
-          300: "#5eead4",
-          400: "#5AC8FA",
-          500: "#06b6d4",
-          600: "#0891b2",
-          700: "#0e7490",
-          800: "#155e75",
-          900: "#164e63",
+          DEFAULT: "#F6F5F3",
+          foreground: "#141414",
         },
         accent: {
-          DEFAULT: "#FF9500",
+          DEFAULT: "#E11D74",
           foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "#FF3B30",
+          DEFAULT: "#F04438",
           foreground: "#ffffff",
         },
         muted: {
@@ -82,9 +73,9 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: "12px", // Apple-like border radius
-        md: "8px",
-        sm: "6px",
+        lg: "1.25rem",
+        md: "0.9rem",
+        sm: "0.6rem",
       },
       boxShadow: {
         apple: "0 4px 16px rgba(0, 0, 0, 0.1)",
